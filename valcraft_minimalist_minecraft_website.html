@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ValCraft Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f172a, #111827, #1e293b);
+      color: white;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    .background-glow {
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: rgba(255, 176, 0, 0.12);
+      border-radius: 50%;
+      filter: blur(100px);
+      top: -120px;
+      right: -120px;
+      z-index: -1;
+    }
+
+    .background-glow2 {
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      background: rgba(168, 85, 247, 0.12);
+      border-radius: 50%;
+      filter: blur(100px);
+      bottom: -100px;
+      left: -100px;
+      z-index: -1;
+    }
+
+    nav {
+      width: 100%;
+      padding: 24px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffb000;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #d1d5db;
+      transition: 0.3s ease;
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: #ffb000;
+    }
+
+    .hero {
+      width: 100%;
+      min-height: 85vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 8%;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #facc15;
+      margin-bottom: 24px;
+      font-size: 14px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero h1 {
+      font-size: 68px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(to right, #ffb000, #ff5e00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: #cbd5e1;
+      line-height: 1.8;
+      font-size: 18px;
+      margin-bottom: 38px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .btn {
+      padding: 14px 26px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, #ffb000, #ff6a00);
+      color: white;
+      box-shadow: 0 10px 25px rgba(255, 176, 0, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.15);
+      color: white;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .info-section {
+      padding: 90px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 40px;
+      margin-bottom: 50px;
+      font-weight: 700;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 28px;
+      border-radius: 24px;
+      backdrop-filter: blur(12px);
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,176,0,0.35);
+    }
+
+    .card h3 {
+      margin-bottom: 14px;
+      color: #ffb000;
+      font-size: 22px;
+    }
+
+    .card p {
+      color: #d1d5db;
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .server-ip {
+      margin-top: 14px;
+      background: rgba(0,0,0,0.25);
+      padding: 12px;
+      border-radius: 12px;
+      font-family: monospace;
+      font-size: 15px;
+      color: #facc15;
+      word-break: break-all;
+    }
+
+    .footer {
+      padding: 40px 8%;
+      text-align: center;
+      color: #94a3b8;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 50px;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 44px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background-glow"></div>
+  <div class="background-glow2"></div>
+
+  <nav>
+    <div class="logo">ValCraft</div>
+
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#server">Server Info</a>
+      <a href="https://discord.gg/REPLACE_DISCORD_LINK" target="_blank">Discord</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="badge">✨ Indonesian Minecraft Survival Network</div>
+
+      <h1>
+        Welcome to <span>ValCraft</span>
+      </h1>
+
+      <p>
+        Jelajahi dunia survival yang luas, bangun kerajaanmu sendiri,
+        lawan monster, selesaikan quest, dan nikmati pengalaman bermain
+        Minecraft yang aesthetic dan seru bersama komunitas ValCraft.
+      </p>
+
+      <div class="buttons">
+        <a href="https://discord.gg/REPLACE_DISCORD_LINK" target="_blank" class="btn btn-primary">
+          Join Discord
+        </a>
+
+        <a href="#server" class="btn btn-secondary">
+          Server Info
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="info-section" id="about">
+    <h2 class="section-title">Why Play ValCraft?</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>🌍 Open World Adventure</h3>
+        <p>
+          Jelajahi dunia survival, dungeon, dan adventure map penuh misteri
+          dengan monster dan quest menarik.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>⚔️ RPG & Quest</h3>
+        <p>
+          Temui NPC, ambil quest, lawan boss monster, dan tingkatkan equipment
+          untuk menjadi petualang terkuat.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🏠 Community Server</h3>
+        <p>
+          Bangun base bersama teman, trade item, dan nikmati komunitas aktif
+          dengan event menarik setiap minggunya.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🧙 Custom Adventure</h3>
+        <p>
+          Rasakan pengalaman adventure dengan custom mob, hidden dungeon,
+          dan sistem exploration yang immersive.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="info-section">
+    <h2 class="section-title">Game Features</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>⚡ Smooth Performance</h3>
+        <p>
+          Server dioptimasi menggunakan PaperMC untuk memberikan gameplay
+          yang stabil, ringan, dan minim lag.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🎁 Weekly Events</h3>
+        <p>
+          Ikuti event mingguan, mini games, dan challenge seru untuk
+          mendapatkan hadiah menarik.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🛡️ Friendly Community</h3>
+        <p>
+          Komunitas aktif dengan staff yang siap membantu dan menjaga
+          pengalaman bermain tetap nyaman.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>📦 Economy & Trading</h3>
+        <p>
+          Trade item dengan player lain, bangun toko sendiri,
+          dan kembangkan ekonomi server.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="info-section" id="server">
+    <h2 class="section-title">Server Information</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>🖥️ Server IP</h3>
+        <p>Gunakan IP berikut untuk masuk ke server Minecraft ValCraft.</p>
+
+        <div class="server-ip">
+          play.valcraft.id
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🎮 Server Version</h3>
+        <p>
+          Supported Version:<br>
+          Minecraft Java Edition 1.20.x+
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🌐 Server Modes</h3>
+        <p>
+          Survival, Adventure, Quest, Dungeon,
+          dan exploration world yang terus berkembang.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>💬 Discord Community</h3>
+        <p>
+          Bergabung dengan komunitas Discord untuk update event,
+          giveaway, dan informasi server terbaru.
+        </p>
+
+        <br>
+
+        <a href="https://discord.gg/REPLACE_DISCORD_LINK" target="_blank" class="btn btn-primary">
+          Open Discord
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="info-section">
+    <h2 class="section-title">Server Statistics</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>👥 Active Community</h3>
+        <p>
+          Player aktif setiap hari dengan komunitas Indonesia
+          yang ramah dan seru untuk mabar.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>⚔️ Epic Battles</h3>
+        <p>
+          Hadapi custom boss dan monster unik dengan mekanik
+          pertarungan yang lebih menantang.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🏰 Massive Builds</h3>
+        <p>
+          Temukan kota besar, kerajaan player,
+          dan build aesthetic di seluruh server.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🚀 Constant Updates</h3>
+        <p>
+          Server terus dikembangkan dengan fitur baru,
+          balancing gameplay, dan konten adventure tambahan.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    © 2026 ValCraft Network • All Rights Reserved
+  </footer>
+
+</body>
+</html>
